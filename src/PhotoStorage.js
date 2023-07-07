@@ -13,13 +13,13 @@ const PhotoStorage = () => {
   const [imageList, setImageList] = useState([])
 
 
-  const ListAllRefImg = ref(storage, "imageFiles/")
+  const ListAllRefImg = ref(storage, "imagePhotos/")
 
     const UploadImage = ()=>{
       if(imageUpload == null) return;
        
 
-      const imageRef = ref(storage,`imageFiles/ ${imageUpload.name + v4()}`) 
+      const imageRef = ref(storage,`imagePhotos/ ${imageUpload.name + v4()}`) 
 
       uploadBytes(imageRef, imageUpload).then((snapshot)=>{
         getDownloadURL(snapshot.ref).then((url)=>{
@@ -48,7 +48,7 @@ const PhotoStorage = () => {
  
     },[])
 
-  /*const upDateForm = document.querySelector(".update")
+/*  const upDateForm = document.querySelector(".update")
  upDateForm.addEventListener((e)=>{
   e.preventDefault()
 
@@ -109,14 +109,14 @@ export default PhotoStorage
 
 const Container = styled.div`
 
-  /*width: 100vw;
-  height: 100vh;
+  width: 500px;
+ // height: 80%;
   display: flex;
   align-items: space-between;;
- flex-direction: row;
+ flex-direction: column;
   
   justify-content:space-evenly;
-  background-color: white;
+  background-color: white !important;
 
 img {
   width: 40px;
@@ -124,6 +124,6 @@ img {
   
   
   //align-items:space-between
-}*/
+}
 
 `

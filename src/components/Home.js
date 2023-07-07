@@ -6,14 +6,16 @@ import Movies from "./Movies";
 import db from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
-import {setMovies} from "../features/movie/movieSlice";
+//import {setMovies} from "../features/movie/movieSlice"
+import { setMovies } from '../features/movie/movieSlice';
+
 
 
 
 const Home = () => {
   const dispatch = useDispatch()
  
-useEffect(()=>{
+useEffect(()=>{ 
   const colRef  = collection(db, "movies")
   getDocs(colRef)
   .then((resp)=>{
@@ -46,8 +48,7 @@ useEffect(()=>{
     
      
       </span>
-      <ImgSlider/>
-      <Viewers/>
+ 
       <Movies/>
       </Container>
   )

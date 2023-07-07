@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
+import { createAction } from "@reduxjs/toolkit";
 
 
 
@@ -39,7 +40,7 @@ const userSlice = createSlice({
 
 })
 
-export const {setUserLogin, setUserLogout} = userSlice.actions;
+export const {setUserLogin, setUserLogOut} = userSlice.actions;
 
 export const selectUserName = (state)=> state.user.name;
 export const selectUserEmail = (state)=> state.user.email;

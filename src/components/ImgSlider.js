@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useState,useEffect } from 'react';
 
 
 
 const ImgSlider = () => {
+
+
+
+
+
  let settings = {
 
     dots : true,
@@ -26,12 +32,16 @@ const ImgSlider = () => {
 
       
      <Wrap>
+     <Suspense fallback={<div>Loading...</div>}>
        <img src="/images/slider-badging.jpg" alt="" /> 
+       </Suspense>
     </Wrap>
    
 
     <Wrap>
+    <Suspense fallback={<div>Loading...</div>}>
        <img src="/images/slider-badag.jpg" alt="" /> 
+       </Suspense>
     </Wrap>
 
     </Carousel>

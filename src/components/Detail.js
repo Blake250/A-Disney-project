@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+  import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import {useParams} from "react-router-dom";
-import backphoto from "../features/backGrd/backphoto.jpg";
+import backPhoto from "../features/backGrd/backPhoto.jpg";
 import  groupIcon from "../features/backGrd/groupIcon.png";
 import db from "../firebase"
 import { getDoc,   doc } from 'firebase/firestore';
@@ -14,35 +14,39 @@ import { async } from '@firebase/util';
 
   const Detail = () => {
   let {id}= useParams()
-  //console.log(id)
+  console.log(id)
   const [movie, setMovie] = useState([])
+  const [displayImage, setDisplayImage] = useState(null)
 
 
 
 
  const getData = async ()=>{
 
-  const docRef = doc(db, "movies", "1kEw2jwcVMwzILle1tuD");
+  const docRef = doc(db, "movies", id);
   const docSnap = await getDoc(docRef);
   
   if (docSnap.exists()) {
     setMovie(docSnap.data())
+    setDisplayImage(docSnap.data().image_url)
   } else {
     // doc.data() will be undefined in this case
     console.log("No such document!");
   }
+      
+
  }
- 
-  
+
  
  useEffect(()=>{
-  getData()
 
+  getData()
  }, [])
   
     
-
-
+ useEffect(() => {
+  console.log("displayImage:", displayImage); // Log the value of displayImage
+}, [displayImage]);
 
 
   return (
@@ -52,8 +56,14 @@ import { async } from '@firebase/util';
       <>   
     <Container>  
     <BackGround>
- 
-      <img src={backphoto} alt="" />
+      {
+        displayImage? (<img src={displayImage} alt={""} />
+          ):(
+            <img src= "./images/backupImg.jpg"  
+             alt="" />
+          )
+      }
+
     </BackGround>
      
     
@@ -81,18 +91,18 @@ import { async } from '@firebase/util';
 </Controls>
 <SubTitle>
      
-  <h4>{movie.Director}</h4> 
+  <h4>{movie.Directed}</h4> 
     
     
       
 </SubTitle>
 
 <Description>
-The Lost City [5] is a 2022 American action-adventure comedy film directed by the Nee brothers, who co-wrote the screenplay with Oren Uziel and Dana Fox,
- from a story conceived by Seth Gordon.[6] 
- It stars Sandra Bullock and Channing Tatum as a romance novelist and her cover model, 
- who must escape a billionaire (Daniel Radcliffe) and find the lost ancient city described in one of her books.
-  The film co-stars Da'Vine Joy Randolph, with cameo appearances by Brad Pitt and Stephen Lang.
+<p>  {movie.release_date}</p>
+
+  {movie.description}
+ 
+
 </Description>
 
    
@@ -124,7 +134,8 @@ left:0;
 bottom:0;
 right:0;
 opacity:0.8;
-background-image: url(${backphoto});
+object-fit:contain;
+background-image: url(${backPhoto});
 
 
 
@@ -160,6 +171,12 @@ h2{
   font-weight:600;
   position:absolute;
   bottom:280px;
+
+  @media (max-width:768px) {
+    font-size:50px;
+    margin-bottom:90px;
+    
+  }
 }
 
 `
@@ -253,36 +270,23 @@ const GroupWatchButton = styled( AddButton)`
 background-image: url(${groupIcon});
 padding:2px;
 background-position:center;
-
-
-
-
-
-
-
-
-
-
 `
+
 
 const SubTitle = styled.div`
-    
-color:white;
-filter: brightness(100%);
-font-size:15px;
-min-height:20px;
-margin-top:26px;
-
-`
+  margin-top: 16px;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 600;
+  font-style: italic;
+`;
 
 const Description = styled.div`
-       
-color:white;
-filter: brightness(100%); 
-line-height:1.4;
-font-size:13px;
-margin-top:16px;
-
-
-`
-
+  margin-top: 16px;
+  font-size: 16px;
+  color: white;
+  z-index:1;
+  position: relative;
+  opacity:1;
+  font-style:italic;
+`;

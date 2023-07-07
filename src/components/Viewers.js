@@ -32,6 +32,8 @@ display:grid;
 grid-template-columns: repeat(5, minmax(0, 1fr));
 grid-gap:25px;
 padding:30px 0 26px;
+position: relative;
+z-index:15;
 
 `
 
@@ -40,7 +42,7 @@ padding:30px 0 26px;
 
 
  const Wrap =styled.div`
-
+ 
  img{
     width:100px;
     height:70px;
@@ -48,12 +50,13 @@ padding:30px 0 26px;
     border:3px solid rgba(249, 249, 249, 0.1);
     border-radius:15px;
     box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px;
+    margin-left:50px;
 
     &:hover{
     transform :scale(1.05);
     border-color:rgba(249, 249, 249, 0.8);
     box-shadow: rgb(0 0 0 / 80%) 0px 30px 22px -10px;
-    border-color: rgba(249, 249, 249, 0.8);
+   // border-color: rgba(249, 249, 249, 0.8);
  }
 
 
@@ -71,6 +74,7 @@ padding:30px 0 26px;
     object-fit:cover;
     border:3px solid rgba(249, 249, 249, 0.1);
     border-radius:10px;
+    margin-left:0 !important;
 
     &:hover{
     transform :scale(1.05);

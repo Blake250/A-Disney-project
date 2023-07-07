@@ -20,7 +20,7 @@ const  movieSlice = createSlice({
 
 
 export const {setMovies} =  movieSlice.actions;
-//export const selectMovies = (state) =>  state.movies;
+export const selectMovies = (state) =>  state.movies;
 
 
 export default   movieSlice.reducer;

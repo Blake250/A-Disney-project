@@ -1,7 +1,9 @@
-import movieReducer from "../features/movie/movieSlice";
-import { configureStore } from '@reduxjs/toolkit';
+//import movieReducer from "../features/movie/movieSlicee";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import thunk from "redux-thunk"
+import movieSlice from '../features/movie/movieSlice';
 import userSlice from "../features/user/userSlice";
+//import { combineReducers } from "@reduxjs/toolkit";
 
 
 
@@ -23,13 +25,29 @@ import storage from 'redux-persist/lib/storage'
 
 
 
+const rootReducer = combineReducers( 
+{    
+  movie : movieSlice,
+  user : userSlice
+
+
+
+}
+
+ )
+
+
+
+
+
+
 const persistConfig = {
   key: 'movies',
   version: 1,
   storage,
 }
 
-const persistedReducer = persistReducer(persistConfig, movieReducer,userSlice)
+const persistedReducer = persistReducer(persistConfig,rootReducer )
 
 export const store = configureStore({
   reducer: persistedReducer,
