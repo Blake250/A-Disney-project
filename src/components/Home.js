@@ -6,8 +6,8 @@ import Movies from "./Movies";
 import db from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
-//import {setMovies} from "../features/movie/movieSlice"
-import { setMovies } from '../features/movie/movieSlice';
+
+import { setMovies } from './app/movie/filmSlice';
 
 
 
@@ -44,10 +44,7 @@ useEffect(()=>{
   return (
     
     <Container>
-      <span >
-    
-     
-      </span>
+ 
  
       <Movies/>
       </Container>

@@ -5,7 +5,7 @@ const  initialState = {
     movies: []
 };
 
-const  movieSlice = createSlice({
+const  filmSlice = createSlice({
     name: "movie",
     initialState ,
 
@@ -19,9 +19,9 @@ const  movieSlice = createSlice({
 })
 
 
-export const {setMovies} =  movieSlice.actions;
+export const {setMovies} =  filmSlice.actions;
 export const selectMovies = (state) =>  state.movies;
 
 
-export default   movieSlice.reducer;
+export default   filmSlice.reducer;
 

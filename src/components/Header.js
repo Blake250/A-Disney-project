@@ -259,9 +259,7 @@ position: relative;
 z-index:999;
 
 
-//position:static;
-//left:330px;
-//top:3px;
+
 
 
 
@@ -517,7 +515,7 @@ flex:1;
 display:flex;
 justify-content: center;
 
-flex:1;
+
 align-items:center;
 position: relative;
   
